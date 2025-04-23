@@ -1,0 +1,41 @@
+{
+    "Prologue": {
+      "text": "Looking out of the peephole, I'm relieved to see no one lurking outside. Just to be sure, I open the door a smidge and peek out. There's no one in the corridor, either.\n\nSliding out of the room, I make sure the door click shut behind me before heading for the elevators.\n\nWhile waiting for one, my hands grow clammy in their silk gloves. Antonio, his father's men, as well as a few other gangs are having a meeting in a room two floors below this one, and one of them can come up here, or see me on their way down. I've worn a wig and heavy make up to disguise myself but gangsters are paranoid.\n\nThankfully, when an elevator arrives, it is completely empty. I just have to reach the first floor without anyone recognizing me then I should be in the clear.",
+      "choices": [
+        {
+          "text": "Ride the elevator down",
+          "nextChapter": "Ride the elevator down"
+        }
+      ]
+    },
+    "Ride the elevator down": {
+      "text": "Seven.\n\nSix.\n\nFive, please don't open, please don't -\n\nThe elevator opens with a ding. Towering over me is a blond man in an imposing black suit.\n\n//Antonio.//\n\nI freeze, an excuse already forming on my lips, until I realize the man's eyes are a dark blue, not brown. His eyes are hooded, not droopy and his nose is slightly crooked instead of straight. Anyway, it's an entirely different man than the one I'm trying to avoid.\n\nRelieved, I step aside for him to enter. The sight behind him makes my heart jumps - a corridor crawling with mobsters smoking and conversing. Antonio is not among them.\n\nFortunately, other than the man next to me, no one seem to be interested in coming down. The doors close without any interruption, and soon floor five is left behind.\n\nThroughout the journey, I steal glances at the man next to me to kill time. He is definitely a mobster, but his choice of suit suggested he wasn't Sal's - no, Antonio's men. He could be one of the dead man's colleagues though.\n\n\"Are you a performer, sugar? Or are you one of the call girls coming in for the party tonight?\"",
+      "choices": [
+        { "text": "Become angry", "nextChapter": "This man is below my league" },
+        { "text": "This man is below my league", "nextChapter": "This man is below my league" },
+        { "text": "Flirt back", "nextChapter": "Flirt back" },
+        { "text": "Stay silent", "nextChapter": "Stay silent" }
+      ]
+    },
+    "This man is below my league": {
+      "text": "Brows furrowing, I look at the mobster with disgust. My eyes rake over his simple black suit and his unpolished shoes. The audacity of him to think he has a chance with //me//. I may look dressed down now, I was the widowed wife of the late head of the Cacciola family, for god's sake.\n\nThe mobster is taken aback by my reaction. \"It's just a question!\"\n\nBased on the fact that he is alone and his coat is not as fitted as it should be, it is clear that he is a mere soldier. If I didn't choose to become a sleuth, I would never have to spare lowly men like these a second glance.\n\n\"A word of advice. Don't ask questions like that to women you don't know,\" I tell him coldly.\n\nThe man doesn't have anything to say back to that, but the uncomfortable silence growing between us is more than enough of an answer.\n\nFinally, the number above me reach one. The door opens with a ding. The lowly mobster gestures to the door, as if to say \"Lady first\".\n\nI ignore him and walk out.",
+      "choices": [{ "text": "Leave", "nextChapter": "Leave" }]
+    },
+    "Flirt back": {
+      "text": "I quirk up a corner of my lips.\n\n\"I'm neither, but are you interested, handsome?\"\n\n\"You don't happen to have a husband or a boyfriend, don't you?\" The man sounds a little nervous. He must have thought I'm a patron of the hotel.\n\nI chuckle and show off my ringless hand.",
+      "choices": [{ "text": "Leave", "nextChapter": "Leave" }]
+    },
+    "Stay silent": {
+      "text": "The thought of violent gangsters abusing some poor girls and justifying it by saying they \"paid\" make me sick to my stomach.\n\nI don't want to engage with this man, so I pretend not to hear him.\n\n\"Are you ignoring me, sugar?\"\n\nI stay silent, my eyes glue on the floor number decreasing. Three more floors and I should be rid of him.\n\nThe man next to me huffs out an irritated breath, but otherwise doesn't do anything else.\n\nFinally, the number above me reach one. The doors open with a ding.\n\nThe man gestures to the door, as if to say \"Lady first\". I ignore him again and walk out.",
+      "choices": [{ "text": "Leave", "nextChapter": "Leave" }]
+    },
+    "Leave": {
+      "text": "Feeling unsatisfied, I head for the doors. I need some fresh air to calm the adrenaline coursing through my blood, and I also need to describe the dead man to someone so I wouldn't forget.\n\nA doorman bows at me as I passed. The Grand Hotel is the largest buiding in a three-way, the bright yellow lighting of its lobby spilling out to the street. A few yards away, a lonely payphone stands.\n\nI quickly make my way there. There are a few pedestrians, but no one pays attention to me.\n\nSlipping in the booth, I close the glass door behind me. I reach for the coin pouch inside my purse and poured out a dime. The machine made a clicking noise before words appeared on the screen.\n\nI punch Jon's number in first, my mind racing at the thought of what he would say to my discovery, before I remember that he was against me tailing the Outfit. Disheartened, I reset the numbers and dialled Remi's number instead. She is the only one who isn't in the hotel and doesn't know I'm doing this.\n\nThe phone rings, eventually stopping at a beat. Silence greets me. Remi is probably still at home.",
+      "choices": [{ "text": "Remi?", "nextChapter": "End of Prologue" }]
+    },
+    "End of Prologue": {
+      "text": "Coppers have arrived at the scene. Specifically Jon, who says my name in surprise.\n\nTo top this mess off, a taxi stops in front of the hotel and Remi almost tumbles out of it. Her panicked eyes sweep over the crowd and the smoke, before they land on me.\n\n//Shit.//",
+      "choices": [{ "text": "Continue to Chapter 1", "nextChapter": "Chapter 1" }]
+    }
+  }
+  

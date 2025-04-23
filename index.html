@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detective Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sidebar for Contact Book & Case -->
+    <div id="sidebar">
+        <h2>Detective Tools</h2>
+        <button id="contact-book-btn">Contact Book</button>
+        <button id="case-btn">Case Files</button>
+        
+        <div id="contact-book" class="hidden">
+            <h3>Contacts</h3>
+            <ul id="contact-list"></ul>
+        </div>
+
+        <div id="case-files" class="hidden">
+            <h3>Case Files</h3>
+            <ul id="case-list"></ul>
+        </div>
+    </div>
+
+    <!-- Main Game Content -->
+    <div id="game-container">
+        <h1>Deathly Rose</h1>
+        <div id="story-text">Load your progress or start a new game.</div>
+        <div id="choices"></div>
+
+        <!-- Game Menu -->
+        <div id="menu">
+            <button id="new-game">New Game</button>
+            <button id="save-game">Save Game</button>
+            <button id="load-game">Load Game</button>
+        </div>
+    </div>
+
+    <!-- Load Scripts -->
+    <script src="storyData.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
