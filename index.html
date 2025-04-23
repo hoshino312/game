@@ -10,18 +10,21 @@
     <!-- Sidebar for Contact Book & Case -->
     <div id="sidebar">
         <h2>Detective Tools</h2>
-        <button id="contact-book-btn">Contact Book</button>
-        <button id="case-btn">Case Files</button>
+        <div class="tool-section">
+            <button id="contact-book-btn">Contact Book</button>
+            <div id="contact-book" class="hidden">
+                <h3>Contacts</h3>
+                <ul id="contact-list"></ul>
+            </div>
+        </div>
         
-        <div id="contact-book" class="hidden">
-            <h3>Contacts</h3>
-            <ul id="contact-list"></ul>
-        </div>
-
-        <div id="case-files" class="hidden">
-            <h3>Case Files</h3>
-            <ul id="case-list"></ul>
-        </div>
+        <div class="tool-section">
+            <button id="case-btn">Case Files</button>
+            <div id="case-files" class="hidden">
+                <h3>Case Files</h3>
+                <ul id="case-list"></ul>
+            </div>
+        </div>        
     </div>
 
     <!-- Main Game Content -->
@@ -39,7 +42,6 @@
     </div>
 
     <!-- Load Scripts -->
-    <script src="storyData.js"></script>
     <script src="game.js"></script>
 </body>
 </html>
