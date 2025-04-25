@@ -26,11 +26,17 @@
             </div>
         </div>        
     </div>
-
+    
     <!-- Main Game Content -->
     <div id="game-container">
         <h1>Deathly Rose</h1>
         <div id="story-text">Load your progress or start a new game.</div>
+        <img id="story-image" class="story-media hidden" alt="Scene Image">
+        <audio id="story-audio" class="story-media hidden" controls></audio>
+        <!-- Bỏ vào trong <body> -->
+        <audio id="background-music" src="assets/audio/your-background-music.mp3" loop autoplay muted></audio>
+
+
         <div id="choices"></div>
 
         <!-- Game Menu -->

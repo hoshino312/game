@@ -1,4 +1,4 @@
-/* General Styling */
+/* --- General Styling --- */
 body {
     font-family: Arial, sans-serif;
     background-color: #111;
@@ -6,16 +6,15 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    overflow: hidden; /* Prevent horizontal scrolling */
 }
 
-/* Sidebar */
+/* --- Sidebar --- */
 #sidebar {
     width: 250px;
     background-color: #222;
     padding: 15px;
     height: 100vh;
-    overflow-y: auto; /* Makes the sidebar scrollable */
+    overflow-y: auto;
     box-shadow: 2px 0 5px rgba(255, 0, 0, 0.5);
     position: fixed;
     left: 0;
@@ -44,18 +43,13 @@ body {
     background-color: #ff1a1a;
 }
 
-/* Sidebar Content */
-.hidden {
-    display: none;
-}
-
 #contact-book, #case-files {
     background: #333;
     padding: 10px;
     border-radius: 5px;
     margin-top: 10px;
     max-height: 300px;
-    overflow-y: auto; /* Scrollable content */
+    overflow-y: auto;
 }
 
 #contact-list, #case-list {
@@ -70,9 +64,13 @@ body {
     border-radius: 3px;
 }
 
-/* Game Container */
+.hidden {
+    display: none;
+}
+
+/* --- Game Container --- */
 #game-container {
-    width: calc(100% - 260px); /* Adjusted to account for sidebar */
+    width: calc(100% - 260px);
     margin-left: 260px;
     padding: 20px;
     background: #222;
@@ -80,14 +78,14 @@ body {
     box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.5);
 }
 
-/* Title */
+/* --- Title --- */
 h1 {
     color: #ff4d4d;
     text-shadow: 2px 2px 5px red;
     text-align: center;
 }
 
-/* Story Text */
+/* --- Story Text Area --- */
 #story-text {
     background-color: #333;
     padding: 15px;
@@ -98,7 +96,7 @@ h1 {
     text-align: justify;
 }
 
-/* Choices Buttons */
+/* --- Choices Buttons --- */
 #choices {
     margin-top: 15px;
 }
@@ -120,7 +118,7 @@ h1 {
     background-color: #ff1a1a;
 }
 
-/* Menu Buttons */
+/* --- Menu Buttons --- */
 #menu {
     margin-top: 20px;
     text-align: center;
@@ -141,6 +139,7 @@ h1 {
     background-color: #ff1a1a;
 }
 
+/* --- Tool Section --- */
 .tool-section {
     margin-bottom: 20px;
 }
@@ -150,4 +149,53 @@ h1 {
     background-color: #333;
     padding: 10px;
     border-radius: 5px;
+}
+
+/* --- Story Block (Image + Text Together) --- */
+.story-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
+}
+
+.story-text {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.chapter-img {
+    display: block;
+    margin: 0 auto;
+    max-width: 60%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
+    transition: transform 0.5s;
+}
+
+.chapter-img:hover {
+    transform: scale(1.05);
+}
+
+/* --- Hidden Audio --- */
+.story-audio {
+    display: none;
+}
+
+/* --- Fade In Animation --- */
+.fade-in {
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }

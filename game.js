@@ -11,12 +11,14 @@ const defaultGameState = {
     caseFiles: ["Current Case: ???", "Past Cases: ???"]
 };
 
-let gameState = null;
+let gameState = null; // Game only initializes when a button is clicked
 let storyData = { chapters: {} };
 
-// DOM Elements
+// Story Display Elements
 const textContainer = document.getElementById("story-text");
 const choicesContainer = document.getElementById("choices");
+
+// Sidebar Elements
 const contactBookBtn = document.getElementById("contact-book-btn");
 const caseBtn = document.getElementById("case-btn");
 const contactBookDiv = document.getElementById("contact-book");
@@ -24,20 +26,7 @@ const caseFilesDiv = document.getElementById("case-files");
 const contactList = document.getElementById("contact-list");
 const caseList = document.getElementById("case-list");
 
-// Load Story from JSON
-async function loadStoryFile(filePath) {
-    try {
-        const response = await fetch(filePath);
-        const data = await response.json();
-        storyData.chapters = data;
-        updateUI();
-    } catch (error) {
-        alert("Failed to load story file.");
-        console.error(error);
-    }
-}
-
-// Save Game
+// Save Game State to Local Storage
 function saveGame() {
     if (gameState) {
         localStorage.setItem("detectiveGameState", JSON.stringify(gameState));
@@ -47,7 +36,7 @@ function saveGame() {
     }
 }
 
-// Load Game
+// Load Game State from Local Storage
 function loadGame() {
     const savedState = localStorage.getItem("detectiveGameState");
     if (savedState) {
@@ -61,55 +50,93 @@ function loadGame() {
 
 // Start New Game
 document.getElementById("new-game").addEventListener("click", () => {
-    gameState = { ...defaultGameState };
+    gameState = { ...defaultGameState }; // Reset to default
     updateUI();
 });
 
-// Save/Load Buttons
+// Save Game Button
 document.getElementById("save-game").addEventListener("click", saveGame);
+
+// Load Saved Game Button
 document.getElementById("load-game").addEventListener("click", loadGame);
 
-// Main Game Renderer
+// Load Story Data & UI Update
+const imageElement = document.getElementById("story-image");
+const audioElement = document.getElementById("story-audio");
+
 function updateUI() {
     if (!gameState) {
-        textContainer.innerText = "Start a new game or load a saved game.";
+        textContainer.innerHTML = "Start a new game or load a saved game.";
         choicesContainer.innerHTML = "";
+        imageElement.classList.add("hidden");
+        audioElement.classList.add("hidden");
         return;
     }
 
     const chapterData = storyData.chapters[gameState.currentChapter];
-    if (!chapterData) {
+    if (!chapterData || !chapterData.paragraphs) {
         alert("Chapter data not found!");
         return;
     }
 
-    const paragraphs = chapterData.text.split("\n\n");
-    textContainer.innerText = paragraphs[gameState.currentParagraphIndex];
+    const paragraphObj = chapterData.paragraphs[gameState.currentParagraphIndex];
+    if (!paragraphObj) return;
+
+    let html = '';
+
+    // Tạo 1 story block
+    html += `<div class="story-block fade-in">`;
+
+    if (paragraphObj.image) {
+        html += `<img src="${paragraphObj.image}" alt="Scene" class="chapter-img">`;
+    }
+
+    html += `<p class="story-text">${paragraphObj.text}</p>`;
+
+    if (paragraphObj.audio) {
+        html += `<audio src="${paragraphObj.audio}" class="story-audio" autoplay onended="startBackgroundMusic()" style="display:none;"></audio>`;
+    }
+
+    html += `</div>`;
+
+    textContainer.innerHTML = html;
+
     choicesContainer.innerHTML = "";
 
-    if (gameState.currentParagraphIndex >= paragraphs.length - 1) {
+    if (gameState.currentParagraphIndex >= chapterData.paragraphs.length - 1) {
         displayChoices();
     }
 
     updateSidebar();
 }
 
-// Next Paragraph
+function startBackgroundMusic() {
+    const bgm = document.getElementById("background-music");
+    if (bgm) {
+        bgm.muted = false;
+        bgm.play();
+    }
+}
+
+
+
 textContainer.addEventListener("click", () => {
     if (!gameState) return;
 
-    const paragraphs = storyData.chapters[gameState.currentChapter].text.split("\n\n");
-    if (gameState.currentParagraphIndex < paragraphs.length - 1) {
+    const chapterData = storyData.chapters[gameState.currentChapter];
+    if (gameState.currentParagraphIndex < chapterData.paragraphs.length - 1) {
         gameState.currentParagraphIndex++;
-        textContainer.innerText = paragraphs[gameState.currentParagraphIndex];
+        updateUI();
     } else {
         displayChoices();
     }
 });
 
-// Choices Renderer
+
+
+// Display Choices
 function displayChoices() {
-    choicesContainer.innerHTML = "";
+    choicesContainer.innerHTML = ""; // Clear old choices
     const chapterData = storyData.chapters[gameState.currentChapter];
 
     if (chapterData.choices) {
@@ -119,9 +146,13 @@ function displayChoices() {
             button.addEventListener("click", () => {
                 gameState.currentChapter = choice.nextChapter;
                 gameState.currentParagraphIndex = 0;
-
-                if (choice.addContact) addContact(choice.addContact);
-                if (choice.addCase) addCase(choice.addCase);
+                
+                if (choice.addContact) {
+                    addContact(choice.addContact);
+                }
+                if (choice.addCase) {
+                    addCase(choice.addCase);
+                }
 
                 updateUI();
             });
@@ -130,19 +161,24 @@ function displayChoices() {
     }
 }
 
-// Sidebar Toggles
-contactBookBtn.addEventListener("click", () => contactBookDiv.classList.toggle("hidden"));
-caseBtn.addEventListener("click", () => caseFilesDiv.classList.toggle("hidden"));
+// Sidebar Toggle
+contactBookBtn.addEventListener("click", () => {
+    contactBookDiv.classList.toggle("hidden");
+});
 
-// Sidebar Renderer
+caseBtn.addEventListener("click", () => {
+    caseFilesDiv.classList.toggle("hidden");
+});
+
+// Update Sidebar
 function updateSidebar() {
     contactList.innerHTML = "";
     caseList.innerHTML = "";
 
     gameState.contactBook.forEach(contact => {
-        const li = document.createElement("li");
+        let li = document.createElement("li");
         li.innerHTML = `<strong>${contact.name}:</strong><br>
-                        - Age: ${contact.age}<br>
+                        - Age: ${contact.age} years old<br>
                         - Gender: ${contact.gender}<br>
                         - Appearance: ${contact.appearance}<br>
                         - Info: ${contact.info.join("<br>")}`;
@@ -150,7 +186,7 @@ function updateSidebar() {
     });
 
     gameState.caseFiles.forEach(caseItem => {
-        const li = document.createElement("li");
+        let li = document.createElement("li");
         li.innerText = caseItem;
         caseList.appendChild(li);
     });
@@ -167,6 +203,23 @@ function addCase(name) {
         gameState.caseFiles.push(name);
     }
 }
+
+function loadStoryFile(path) {
+    fetch(path)
+        .then(response => {
+            if (!response.ok) throw new Error("Story file not found");
+            return response.json();
+        })
+        .then(data => {
+            storyData = data;
+            if (gameState) updateUI(); // If game already running
+        })
+        .catch(err => {
+            console.error("Error loading story file:", err);
+            textContainer.innerText = "Failed to load story. Check the console.";
+        });
+}
+
 
 // Load first story file
 loadStoryFile("story/prologue.json");
